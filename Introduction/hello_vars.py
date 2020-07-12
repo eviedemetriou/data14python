@@ -1,16 +1,19 @@
-#hw = "Hello world!"
+hw = "Hello world!"
 
-#name = input("Insert your name:  \n")
-#age = int(input("Insert your age:  "))
-#sibl = int(input("Insert the number of siblings you have:  "))
-#decNum = float(input("Insert your favourite decimal number:  "))
-#animal = input("Insert your favourite animal:  ")
+name = input("Insert your name:  \n")
+age = int(input("Insert your age:  \n"))
+sibl = int(input("Insert the number of siblings you have:  \n"))
+decNum = float(input("Insert your favourite decimal number:  \n"))
+animal = input("Insert your favourite animal:  \n")
 
-#print(f"{name}, {age}, {sibl}, {decNum}, {animal}")
+print(f"{name}, {age}, {sibl}, {decNum}, {animal} \n")
 
-hw = "Hello World!"
-print(hw.isalpha())
-print(hw.islower())
-print(hw.endswith('!'))
-print(hw.startswith('H'))
 
+hw = "    Hello world!!!     "
+print(hw.count(" "))
+print(hw.lower())
+print(hw.upper())
+print(hw.capitalize())
+print(hw.replace("o", "oooooo"))
+print(hw.strip())  # or .lstrip() or .rstrip()
+print(hw.strip().upper())
