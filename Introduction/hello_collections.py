@@ -4,6 +4,7 @@ shopping_list = ["bananas", "apples", "oranges", "watermelon", 8, True]
 
 shopping_list[4] = "mango"
 shopping_list.append("lemon")
+del shopping_list[:3]
 print(shopping_list.index(True))
 print(shopping_list)
 print(type(shopping_list), "\n")
@@ -42,7 +43,7 @@ print(data14dic["subjects"][2], "\n")
 
 cars = {"renault", "bmw", "audi", "mercedes", "ferrari"}
 
-cars.pop()
+cars.pop()  # random item removed
 cars.add("jaguar")
-cars.remove("bmw")
+cars.remove("bmw")  # might not work if removed above
 print(cars)

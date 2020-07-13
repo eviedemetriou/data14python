@@ -5,7 +5,7 @@ while counter < 10:
         break
     counter += 1
 
-age = "six"
+age = ''
 while not age.isnumeric():
     age = input("Your age please: ")
     if not age.isnumeric():
