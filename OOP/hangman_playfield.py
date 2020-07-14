@@ -1,23 +1,42 @@
 from hangman_brain import Brain
-from hangman_game import Game
 
-game1 = Game()
 word1 = Brain()
-while game1.total_guesses < 5:
+
+while word1.play_again == True:
+
     word1.hangman_initiation()
-#    game1.guess = input("Make a guess:  \n")
-#     while game1.guess in game1.guesses_list:
-#         guess = input(f"You have already used {game1.guess}. Make another guess:  \n")
-#     print(game1.update_guess_list(guess))
-#     print(f"You made {game1.total_guesses} guess(es) so far!")
-#
-#     if game1.total_guesses == 4:
-#         guess = input("Make your final guess:  \n")
-#         while guess in game1.guesses_list:
-#             guess = input(f"You have already used {guess}. Make another guess:  \n")
-#
-#         game1.total_guesses = 5
-#         print("You have made the max number of guesses allowed.")
+    while word1.game.total_guesses < word1.attempts:
+        word1.game.make_guess()
 
-word1 = Brain()
-word1.hangman_initiation()
+        if len(word1.game.guess) > 1:  # Case when user chooses to guess the whole word
+            if word1.game.guess == word1.word:
+                word1.hangman_win()
+            else:
+                word1.hangman_lose()
+            break
+
+        word1.hangman_update()  # UPDATE letters in word when applicable
+        if '_' not in word1.initial_status:  # Check for WIN
+            print(f"Congratulations {word1.user_name}! You won!!!")
+            break
+        word1.game.update_guess_list()
+
+        if word1.game.total_guesses == word1.attempts - 1:  # Distinct statement for the final guess of the user
+            print("You only have ONE MORE guess.")
+            word1.game.make_guess()
+
+            if len(word1.game.guess) > 1:  # For case when user chooses to guess the whole word
+                if word1.game.guess == word1.word:
+                    word1.hangman_win()
+                else:
+                    word1.hangman_lose()
+                break
+
+            word1.hangman_update()
+            if '_' not in word1.initial_status:
+                print(f"Congratulations {word1.user_name}! You have won!!!")
+            else:
+                print(f"Sorry {word1.user_name}, you lost!")
+            break
+
+    word1.hangman_renew()

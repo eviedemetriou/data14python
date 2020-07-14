@@ -15,6 +15,7 @@ class Brain(Game):
         self.first_letter = self.word[0]
         self.last_letter = self.word[-1]
         self.initial_status = []
+        self.play_again = True
 
     def hangman_initiation(self):
         self.user_name = input("Hello user! What is your name? \n")
@@ -49,40 +50,11 @@ class Brain(Game):
     def hangman_lose(self):
         print(f"Sorry {self.user_name} but this is not the right word. You lost!")
 
-
-word1 = Brain()
-
-word1.hangman_initiation()
-while word1.game.total_guesses < word1.attempts:
-    word1.game.make_guess()
-
-    if len(word1.game.guess) > 1:  # For case when user chooses to guess the whole word
-        if word1.game.guess == word1.word:
-            word1.hangman_win()
+    def hangman_renew(self):
+        user_choice = input("Would you like to play again? Y/N\n")
+        if user_choice.upper() == 'y' or user_choice.upper() == 'yes':
+            print("Let's do this!!!")
+            self.play_again = True
         else:
-            word1.hangman_lose()
-        break
-
-    word1.hangman_update()
-    if '_' not in word1.initial_status:
-        print(f"Congratulations {word1.user_name}! You won!!!")
-        break
-    word1.game.update_guess_list()
-
-    if word1.game.total_guesses == word1.attempts - 1:  # Distinct statement for the final guess of the user
-        print("You only have ONE MORE guess.")
-        word1.game.make_guess()
-
-        if len(word1.game.guess) > 1:  # For case when user chooses to guess the whole word
-            if word1.game.guess == word1.word:
-                word1.hangman_win()
-            else:
-                word1.hangman_lose()
-            break
-
-        word1.hangman_update()
-        if '_' not in word1.initial_status:
-            print(f"Congratulations {word1.user_name}! You have won!!!")
-        else:
-            print(f"Sorry {word1.user_name}, you lost!")
-        break
+            print("It was a pleasure!!!")
+            self.play_again = False
