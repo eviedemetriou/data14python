@@ -2,9 +2,11 @@
 class Game():
 
     def __init__(self):
+        self.user_name = ''
         self.guess = ''
         self.guesses_list = []
         self.total_guesses = 0
+        self.play_again = True
 
     def make_guess(self):
         user_option = input("Do you want to guess a letter (type '1') or the word (type '2')? ")
