@@ -1,7 +1,7 @@
 from random import choice
 from hangman_game import Game
 
-word_list = ["anaconda", "supernova", "psychedelic", "autodidact"]
+word_list = ["anaconda", "supernova", "psychedelic", "autodidact", "inconsequential"]
 
 class Brain(Game):
 
@@ -21,7 +21,7 @@ class Brain(Game):
 
     def hangman_initiation(self):  # INITIALIZING hidden word - choose easy/hard version of game
         self.game.user_name = input("Hello user! What is your name? \n")
-        game_choice = input(f"{self.game.user_name} do you want the easy version (first and last letters given)? Y/N \n")
+        game_choice = input(f"{self.game.user_name} do you want the easy hangman version (first and last letters given)? Y/N \n")
         self.initial_status = ["_"] * self.word_length
         if game_choice.upper() == 'Y' or game_choice.upper() == 'YES':
             print("As you like!\n")
