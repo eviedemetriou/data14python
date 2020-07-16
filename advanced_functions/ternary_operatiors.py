@@ -10,6 +10,3 @@ print(("Go away!", "Go ahead!")[age >= 18])
 # False == 0
 # True == 1
 
-# UNIT TESTING
-
-

@@ -23,10 +23,11 @@ class cats():
         if self.energy() == 'low':
             self.hunger = True
         elif self.energy == 'medium':
+            self.hunger = False
 
 
     def meow(self):
-        return Meow!
+        return "Meow!"
 
 class Animal:
     def __init__(self, name, legs, colour):
@@ -52,5 +53,5 @@ class Labrador(Dog):
     def bark(self):
         print("Woolf!")
 
-new_dog = Dog():
-    new_dog.
+#new_dog = Dog():
+#    new_dog.

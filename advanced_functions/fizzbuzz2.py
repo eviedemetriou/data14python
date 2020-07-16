@@ -1,4 +1,4 @@
-def fizzbuzz2(start_default, end_default, step_default):
+def fizzbuzz(start_default, end_default, step_default):
 
     start_user_qs = input('Do you want to change the default for start? Y/N\n')
     if start_user_qs.upper() == 'Y' or start_user_qs.upper() == 'YES':
@@ -38,4 +38,4 @@ def fizzbuzz2(start_default, end_default, step_default):
             print(num)
 
 
-fizzbuzz2(1, 100, 1)
+fizzbuzz(1, 100, 1)

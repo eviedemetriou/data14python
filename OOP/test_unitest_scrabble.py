@@ -30,3 +30,11 @@ def test_want_to_play():
         assert game.play_again == True
     if choice == 'n':
         assert game.play_again == False
+
+
+## Using 'monkeypatch' with 'pytest' to set certain inputs
+# from io import StringIO
+#
+# def test_take_input(monkeypatch):
+#     monkeypatch.setattr(('sys.stdin'), StringIO("Hello!"))
+#     assert take_input() == "Hello!"  # or could have different 'strings' and '!=' operator
