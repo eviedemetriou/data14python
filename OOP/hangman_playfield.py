@@ -2,9 +2,8 @@ from hangman_brain import Brain
 
 word1 = Brain()
 
-while word1.game.play_again == True:
+while word1.game.play_again == True:  # Keep playing as long as user wants to continue
     word1.reset()  # Resetting and starting over
-
     word1.hangman_initiation()  # Initializing word to be presented to user
     while word1.game.total_guesses < word1.attempts:
         word1.game.make_guess()  # Make a guess
