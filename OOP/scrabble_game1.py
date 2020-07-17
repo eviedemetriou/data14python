@@ -1,3 +1,4 @@
+# Computer generating results from a list of words - not interactive
 from random import choice
 
 letter_list = ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'D', 'E', 'E', 'E', 'E', 'E', 'E',
@@ -58,13 +59,13 @@ class Scrabble:
             return self.word_chosen
 
     def get_word_score(self, word=None):
-        if word == None:
+        if word == None:  # used when only a single word has been found, assigned as word_chosen
             self.word_score = 0
             for i in self.word_chosen:
                 self.word_score += Scores[i.upper()]
             self.word_score_list.append(self.word_score)
             return f"This word is worth {self.word_score} points.\n"
-        else:
+        else:  # used when more than one words have been found in word_check(), to find the one with the highest score
             self.word_score = 0
             for i in word:
                 self.word_score += Scores[i.upper()]
@@ -88,10 +89,10 @@ game = Scrabble()
 
 while game.play_again == True:
     print(game.tile_generation())
-    game.word_check()
+    print(game.word_check())
     while game.word_chosen == '':
-        game.tile_generation()
-        game.word_check()
+        print(game.tile_generation())
+        print(game.word_check())
         if game.word_chosen != '':
             break
     print(game.get_word_score())
