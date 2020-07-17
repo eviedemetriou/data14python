@@ -79,21 +79,18 @@ class Scrabble:
             return self.play_again
         else:
             self.play_again = False
-            #print(f"Your scores are {self.word_score_list}")
-            print(f"Your total score is {sum(self.word_score_list)}\n")
+            print(f"Your total score is {sum(self.word_score_list)}\n")  # Calculated wrong.. haven't checked it over
             print("GOODBYE!!!")
             return self.play_again
 
 
-game = Scrabble()
+#game = Scrabble()
 
-while game.play_again == True:
-    print(game.tile_generation())
-    print(game.word_check())
-    while game.word_chosen == '':
-        print(game.tile_generation())
-        print(game.word_check())
-        if game.word_chosen != '':
-            break
-    print(game.get_word_score())
-    game.want_to_play()
+# while game.play_again == True:
+#     print(game.tile_generation())
+#     game.word_check()
+#     while game.word_chosen == '':
+#         print(game.tile_generation())
+#         game.word_check()
+#     print(game.get_word_score())
+#     game.want_to_play()
