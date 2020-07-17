@@ -1,4 +1,4 @@
-# Computer generating results from a list of words - not interactive
+# Computer generating words formed based on a list of words given - not interactive
 from random import choice
 
 letter_list = ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'D', 'E', 'E', 'E', 'E', 'E', 'E',
