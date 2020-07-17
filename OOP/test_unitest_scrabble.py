@@ -4,18 +4,18 @@ from scrabble_game import Scrabble
 game = Scrabble()
 
 def test_tile_generation(self):
-    if game.word_chosen == '':
-        assert game.tile_generation(len(game.tiles)) == 7
-    if game.word_chosen == 'ab':
-        assert game.tile_generation(len(game.tiles)) == 7
+    game.word_chosen == '':
+    assert len(game.tile_generation()) == 7
+    game.word_chosen == 'ab':
+    assert len(game.tile_generation()) == 7
 
 def test_word_check():
-    if game.tiles == ['U', 'B', 'F', 'Q', 'T', 'P', 'R']:
-      assert game.word_check()
-    if game.tiles == ['O', 'B', 'F', 'Q', 'T', 'P', 'R']:
-      assert game.word_check(game.word_chosen) == 'to'
-    if game.tiles == ['A', 'B', 'O', 'A', 'T', 'P', 'R']:
-      assert game.word_check(game.word_chosen) == 'boat'
+    game.tiles == ['U', 'B', 'F', 'Q', 'T', 'P', 'R']:
+    assert game.word_check()
+    game.tiles == ['O', 'B', 'F', 'Q', 'T', 'P', 'R']:
+    assert game.word_check() == 'to'
+    game.tiles == ['A', 'B', 'O', 'A', 'T', 'P', 'R']:
+    assert game.word_check() == 'boat'
 
 def test_word_score():
     game.word_chosen = 'sun'

@@ -14,10 +14,6 @@ class Brain(Game):
         self.first_letter = self.word[0]
         self.last_letter = self.word[-1]
         self.initial_status = []
-        #self.reset()
-        #self.play_again = True
-
-    #def reset(self):
 
     def hangman_initiation(self):  # INITIALIZING hidden word - choose easy/hard version of game
         self.game.user_name = input("Hello user! What is your name? \n")
