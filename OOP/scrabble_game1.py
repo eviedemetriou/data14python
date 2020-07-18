@@ -39,7 +39,8 @@ class Scrabble:
         words_found = []
         for word in word_list:
             letters = [word.upper()[i:i+1] for i in range(len(word))]
-            if all(elem in self.tiles for elem in letters):
+            if set(letters).issubset(set(self.tiles)):
+                # subset check might not be valid if word contains letter more than once but in tiles it is only present once
                 words_found.append(word)
         if len(words_found) == 0:
             print("No words found -> Generate 7 new tiles\n")
@@ -79,18 +80,18 @@ class Scrabble:
             return self.play_again
         else:
             self.play_again = False
-            print(f"Your total score is {sum(self.word_score_list)}\n")  # Calculated wrong.. haven't checked it over
+            print(f"Your total score is {sum(self.word_score_list)}\n")  # Calculated wrong.. haven't checked why
             print("GOODBYE!!!")
             return self.play_again
 
 
-#game = Scrabble()
+game = Scrabble()
 
-# while game.play_again == True:
-#     print(game.tile_generation())
-#     game.word_check()
-#     while game.word_chosen == '':
-#         print(game.tile_generation())
-#         game.word_check()
-#     print(game.get_word_score())
-#     game.want_to_play()
+while game.play_again == True:
+    print(game.tile_generation())
+    game.word_check()
+    while game.word_chosen == '':
+        print(game.tile_generation())
+        game.word_check()
+    print(game.get_word_score())
+    game.want_to_play()
