@@ -1,4 +1,4 @@
-# Computer generating words formed based on a list of words given - not interactive
+# Computer generating words based on a list of words given - not interactive
 from random import choice
 
 letter_list = ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'D', 'E', 'E', 'E', 'E', 'E', 'E',
@@ -10,8 +10,8 @@ Scores = {
     'K': 5, 'L': 1, 'M': 3, 'N': 1, 'O': 1, 'P': 3, 'Q': 10, 'R': 1, 'S': 1, 'T': 1,
     'U': 1, 'V': 4, 'W': 4, 'X': 8, 'Y': 4, 'Z': 10 }
 
-word_list = ['to', 'in', 'on', 'at', 'and', 'for', 'far', 'sun', 'him', 'her', 'the', 'kid', 'kite', 'rope', 'boat', 'free',
-             'road', 'feet', 'fruit', 'slide',  'above', 'hence', 'plate', 'fresh', 'horse', 'cream', 'scream', 'medium', 'certain']
+word_list = ['to', 'in', 'on', 'at', 'and', 'for', 'far', 'sun', 'him', 'her', 'the', 'red', 'kid', 'kite', 'media', 'rope',
+             'boat', 'road', 'fruit', 'cloth', 'slide',  'above', 'plate', 'fresh', 'horse', 'cream', 'scream', 'certain']
 
 class Scrabble:
 
@@ -76,8 +76,7 @@ class Scrabble:
     def want_to_play(self):
         choice = input("Do you want to have another round? Y/N\n")
         if choice.upper() == 'Y' or choice.upper() == 'YES':
-            self.play_again = True
-            return self.play_again
+            pass
         else:
             self.play_again = False
             print(f"Your total score is {sum(self.word_score_list)}\n")  # Calculated wrong.. haven't checked why

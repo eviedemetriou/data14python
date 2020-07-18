@@ -1,3 +1,4 @@
+# User interactive - user chooses words which are being checked and scored
 from random import choice
 
 letter_list = ['A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'D', 'E', 'E', 'E', 'E', 'E', 'E',
