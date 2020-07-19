@@ -25,33 +25,46 @@ class cats():
         elif self.energy == 'medium':
             self.hunger = False
 
-
     def meow(self):
         return "Meow!"
 
+# CLASS INHERITANCE
+
 class Animal:
-    def __init__(self, name, legs, colour):
+    def __init__(self, name, legs):
+        self.name = name
+        self.legs = legs
         self.hunger = 5
         print("I exist")
 
+    def breathe(self):
+        print("Breathing in...")
+        print("Breathing out...")
+
 class Mammal(Animal):
-    def __init__(self, name, colour):
-        super().__init__(name, 4, colour)
+# If we don't include _init_ method then everything from Animal class is inherited
+# If we include _init_ then it will overwrite Animal class - Animal attributes will be lost
+# Unless we explicitely include attributes of Animal class: super().__init__('all attributes from Animal)
+    def __init__(self, name, legs, colour):
+        super().__init__(name, legs)
+        self.colour = colour
 
     def give_birth(self):
         print('I have a child')
 
 class Dog(Mammal):
     def __init__(self, name, colour):
-        super().__init__(name, colour=colour)
+        super().__init__(name, legs=4, colour=colour)
 
     def wag_tail(self):
         print("wag wag")
+        super().breathe()
 
 class Labrador(Dog):
-
+    # We can overwrite methods and attributes of parent classes by re-writing them with any change we want
     def bark(self):
         print("Woolf!")
 
-#new_dog = Dog():
-#    new_dog.
+my_dog = Dog("Bob", "Brown")
+my_dog.wag_tail()
+
