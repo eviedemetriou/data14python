@@ -2,28 +2,45 @@ import requests
 import json
 from pprint import pprint
 
-#dict_body = {"postcodes": ["EN4 8RY", "B7 4BB"]}
-
-class Postcode:
+class SinglePC:
 
     def __init__(self, postcode):
         self.postcode = postcode
-        #self.json_body = json.dumps(dict_body)
-        #self.headers = {"Content-Type": "application/json"}
         self.address = f"https://api.postcodes.io/postcodes/{self.postcode}"
-        self.req_response = requests.get(self.address)
+        self.request = requests.get(self.address)
+        self.response_json = self.request.json()
 
     def show_details(self):
-        pprint(self.req_response.json())
-
-home = Postcode("EN4 8RY")
-
-home.show_details()
-
-postcodes = []
-pc_objects = []
-
-for postcode in postcodes:
-    pc_objects.append(Post(postcode))
+        print("\n", self.postcode)
+        for key in self.response_json:
+            print(f"\tKEY {key}, VALUE {self.response_json[key]}")
+        # pprint(self.response_json)  # nice format
 
 
+# # Creating multiple postcode objects using a list of postcodes
+# postcodes = ["EN4 8RY", "EN5 3TU"]
+# pc_objects = []
+#
+# for elem in postcodes:
+#     # SinglePC(elem).show_details()  # Creating responses for objects that we don't want to store
+#     pc_objects.append(SinglePC(elem))
+#     SinglePC(elem).show_details()
+# print(pc_objects)
+
+
+
+class MultiplePC:
+
+    def __init__(self, postcodes: dict):
+        self.postcodes = postcodes
+        self.json_body = json.dumps(self.postcodes)
+        self.headers = {"Content-Type": "application/json"}
+        self.address = f"https://api.postcodes.io/postcodes/"
+        self.request = requests.post(self.address, headers=self.headers, data=self.json_body)
+        self.response_json = self.request.json()
+
+
+town1_pcs = {"postcodes": ["EN4 8RY", "B7 4BB"]}
+town1 = MultiplePC(town1_pcs)
+
+pprint(town1.response_json)
