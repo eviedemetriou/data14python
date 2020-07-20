@@ -32,3 +32,18 @@ class PokeAbilities:
 # print(ditto.response_json)
 
 
+generation = {"limber": 3, "imposter": 5}
+
+class PokeAbilityGeneration:
+
+    def __init__(self, ability):
+        self.generation_address = f"https://pokeapi.co/api/v2/generation/{generation[ability]}"
+        self.generation_request = requests.get(self.generation_address)
+        self.generation_response_json = self.generation_request.json()
+        #self.generation = generation
+
+    def show_ability_generation_details(self):
+        pprint(self.generation_response_json)
+
+# limber_gen = PokeAbilityGeneration("limber")
+# pprint(limber_gen)

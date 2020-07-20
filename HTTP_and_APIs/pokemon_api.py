@@ -2,6 +2,7 @@ import requests
 import json
 from pprint import pprint
 from poke_ability_api import PokeAbilities
+from poke_ability_gener_api import PokeAbilityGeneration
 
 class SinglePokemon():
 
@@ -35,6 +36,8 @@ ditto_abilities = {"limber": 7, "imposter": 150}
 for ability in ditto_abilities:
     ditto = PokeAbilities(ability)
     ditto.show_ability_details()
+    ditto = PokeAbilityGeneration(ability)
+    ditto.show_ability_generation_details()
 
 
 ## Class inheritance
