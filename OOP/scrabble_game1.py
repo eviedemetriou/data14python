@@ -76,11 +76,11 @@ class Scrabble:
     def want_to_play(self):
         choice = input("Do you want to have another round? Y/N\n")
         if choice.upper() == 'Y' or choice.upper() == 'YES':
-            pass
-        else:
-            self.play_again = False
+            self.play_again = True
+        elif choice.upper() == 'N' or choice.upper() == 'NO':
             print(f"Your total score is {sum(self.word_score_list)}\n")  # Calculated wrong.. haven't checked why
             print("GOODBYE!!!")
+            self.play_again = False
             return self.play_again
 
 

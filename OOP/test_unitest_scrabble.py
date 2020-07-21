@@ -1,5 +1,5 @@
 from scrabble_game1 import Scrabble
-from unittest import TestCase
+#from unittest import TestCase
 
 game = Scrabble()
 
@@ -24,11 +24,14 @@ def test_word_score():
     game.word_chosen = 'rope'
     assert f"This word is worth {game.word_score} points.\n"
 
-#def test_want_to_play():
-#     if choice == 'y':
-#         assert game.play_again == True
-#     if choice == 'n':
-#         assert game.play_again == False
+
+from io import StringIO
+
+def test_want_to_play(monkeypatch):
+    monkeypatch.setattr('sys.stdin', StringIO("Y"))
+    assert game.play_again == True
+    #monkeypatch.setattr('sys.stdin', StringIO("N"))  # With the 'no' option the test fails (not sure why)
+    #assert game.play_again == False
 
 
 ## Using 'monkeypatch' with 'pytest' to set certain inputs
