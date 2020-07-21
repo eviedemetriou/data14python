@@ -2,19 +2,22 @@ import requests
 import json
 from pprint import pprint
 from poke_ability_api import PokeAbilities
-from poke_ability_gener_api import PokeAbilityGeneration
+#from poke_ability_gener_api import PokeAbilityGeneration
 
 class SinglePokemon():
 
     def __init__(self, poke_name):
-        #super().__init__(single_ability)
-        self.poke_name = poke_name
-        self.address = f"https://pokeapi.co/api/v2/pokemon/{self.poke_name}"
-        self.request = requests.get(self.address)
-        self.response_json = self.request.json()
-        self.abilities = self.response_json['abilities']
-        self.base_experience = self.response_json['base_experience']
-        self.forms = self.response_json['forms']
+        try:
+            #super().__init__(single_ability)
+            self.poke_name = input("Choose a pokemon:")
+            self.address = f"https://pokeapi.co/api/v2/pokemon/{self.poke_name}"
+            self.request = requests.get(self.address)
+            self.response_json = self.request.json()
+            self.abilities = self.response_json['abilities']
+            self.base_experience = self.response_json['base_experience']
+            self.forms = self.response_json['forms']
+        except JSONDecodeError:
+            print("This pokemon does not exist.")
 
     def show_all_details(self):
         print("\n" + self.poke_name)
@@ -39,29 +42,7 @@ class SinglePokemon():
             poke_ability = PokeAbilities(i["ability"]["name"])
 
 
-
 poke = SinglePokemon("ditto")
-#poke.show_abilities()
+poke.show_abilities()
 poke.show_ability_details()
-#poke.show_all_details()
 
-# poke_ditto = SinglePokemon("ditto")
-# poke_ditto.show_all_details()
-# poke_ditto.show_abilities()
-#
-# ditto_abilities = {"limber": 7, "imposter": 150}
-# for ability in ditto_abilities:
-#     ditto = PokeAbilities(ability)
-#     ditto.show_ability_details()
-#     ditto = PokeAbilityGeneration(ability)
-#     ditto.show_ability_generation_details()
-
-
-## Class inheritance
-# ditto = SinglePokemon("ditto", "limber")
-# ditto.show_all_details()
-#
-# ditto_abilities = {"limber": 7, "imposter": 150}
-# for ability in ditto_abilities:
-#     ditto = SinglePokemon("ditto", ability)
-#     ditto.show_ability_details()
