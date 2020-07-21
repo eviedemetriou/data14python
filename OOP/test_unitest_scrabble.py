@@ -20,9 +20,14 @@ def test_word_check():
 
 def test_word_score():
     game.word_chosen = 'sun'
-    assert f"This word is worth {game.word_score} points.\n"
+    game.get_word_score()
+    assert game.word_score == 3
     game.word_chosen = 'rope'
-    assert f"This word is worth {game.word_score} points.\n"
+    game.get_word_score()
+    assert game.word_score == 6
+    game.word_chosen = 'horse'
+    game.get_word_score()
+    assert game.word_score == 8
 
 
 from io import StringIO
