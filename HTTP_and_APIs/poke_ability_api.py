@@ -6,7 +6,7 @@ from pprint import pprint
 #abilities = {"abilities": [7, 150]}
 abilities = {"limber": 7, "imposter": 150}
 
-class PokeAbilities():
+class PokeAbilities:
 
     def __init__(self, single_ability):
         #self.abilities = abilities

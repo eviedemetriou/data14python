@@ -24,20 +24,31 @@ class SinglePokemon():
         #pprint(self.response_json)  # nice format
 
     def show_abilities(self):
+        print(f"Abilities of {self.poke_name}:")
         for i in self.abilities:
-            print(i)
+            print(i["ability"]["name"])
+
+    def show_ability_details(self):
+        for i in self.abilities:
+            poke_ability = PokeAbilities(i["ability"]["name"])
+            poke_ability.show_ability_details()
 
 
-poke_ditto = SinglePokemon("ditto")
-poke_ditto.show_all_details()
-poke_ditto.show_abilities()
+poke = SinglePokemon("ditto")
+poke.show_abilities()
+poke.show_ability_details()
 
-ditto_abilities = {"limber": 7, "imposter": 150}
-for ability in ditto_abilities:
-    ditto = PokeAbilities(ability)
-    ditto.show_ability_details()
-    ditto = PokeAbilityGeneration(ability)
-    ditto.show_ability_generation_details()
+
+# poke_ditto = SinglePokemon("ditto")
+# poke_ditto.show_all_details()
+# poke_ditto.show_abilities()
+#
+# ditto_abilities = {"limber": 7, "imposter": 150}
+# for ability in ditto_abilities:
+#     ditto = PokeAbilities(ability)
+#     ditto.show_ability_details()
+#     ditto = PokeAbilityGeneration(ability)
+#     ditto.show_ability_generation_details()
 
 
 ## Class inheritance
