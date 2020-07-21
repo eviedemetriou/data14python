@@ -86,11 +86,11 @@ class Scrabble:
 
 game = Scrabble()
 
-# while game.play_again == True:
-#     print(game.tile_generation())
-#     game.word_check()
-#     while game.word_chosen == '':
-#         print(game.tile_generation())
-#         game.word_check()
-#     print(game.get_word_score())
-#     game.want_to_play()
+while game.play_again == True:
+    print(game.tile_generation())
+    game.word_check()
+    while game.word_chosen == '':
+        print(game.tile_generation())
+        game.word_check()
+    print(game.get_word_score())
+    game.want_to_play()
