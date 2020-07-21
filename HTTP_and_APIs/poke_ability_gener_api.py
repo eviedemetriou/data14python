@@ -17,6 +17,3 @@ class PokeAbilityGeneration:
         for key in self.generation_response_json:
             print(f"\t\tKEY {key}, VALUE {self.generation_response_json[key]}")
         #pprint(self.generation_response_json)
-
-# limber_gen = PokeAbilityGeneration("limber")
-# pprint(limber_gen)

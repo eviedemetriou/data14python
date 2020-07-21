@@ -33,11 +33,17 @@ class SinglePokemon():
             poke_ability = PokeAbilities(i["ability"]["name"])
             poke_ability.show_ability_details()
 
+    def show_ability_generation(self):
+        print(f"Generation of abilities of {self.poke_name}")
+        for i in self.abilities:
+            poke_ability = PokeAbilities(i["ability"]["name"])
+
+
 
 poke = SinglePokemon("ditto")
-poke.show_abilities()
+#poke.show_abilities()
 poke.show_ability_details()
-
+#poke.show_all_details()
 
 # poke_ditto = SinglePokemon("ditto")
 # poke_ditto.show_all_details()

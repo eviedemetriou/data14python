@@ -1,19 +1,19 @@
-from poke_ability_gener_api import PokeAbilityGeneration
+#from poke_ability_gener_api import PokeAbilityGeneration
 import requests
 import json
 from pprint import pprint
 
-#abilities = {"abilities": [7, 150]}
-abilities = {"limber": 7, "imposter": 150}
 
 class PokeAbilities:
 
     def __init__(self, single_ability):
         #self.abilities = abilities
         self.single_ability = single_ability
-        self.ability_address = f"https://pokeapi.co/api/v2/ability/{abilities[self.single_ability]}"
+        self.ability_address = f"https://pokeapi.co/api/v2/ability/{self.single_ability}"
         self.ability_request = requests.get(self.ability_address)
         self.ability_response_json = self.ability_request.json()
+        self.ability_generation_url = self.ability_response_json["generation"]["url"]
+        self.generation = self.ability_response_json["generation"]["name"]
         # self.poke_abilities = abilities
         # self.json_body = json.dumps(self.poke_abilities)
         # self.headers = {"Content-Type": "application/json"}
@@ -27,24 +27,34 @@ class PokeAbilities:
             print(f"\tKEY {key}, VALUE {self.ability_response_json[key]}")
         #pprint(self.ability_response_json)  # nice format
 
+    def show_ability_generation(self):
+        print("Ability generation:")
+        print(self.generation)
 
-# abilities = {"abilities": [7, 150]}
-# ditto = PokeAbility(abilities)
-# print(ditto.response_json)
+    def show_ability_generation_details(self):
+        print(f"Generation of ability '{self.ability}':")
+        self.show_ability_generation_details()
+        #ability = PokeAbilityGeneration(self.single_ability)
+        #self.show_ability_generation_details()
 
 
-generation = {"limber": 3, "imposter": 5}
 
-class PokeAbilityGeneration:
+class PokeAbilityGeneration(PokeAbilities):
 
-    def __init__(self, ability):
-        self.generation_address = f"https://pokeapi.co/api/v2/generation/{generation[ability]}"
+    def __init__(self, single_ability):
+        super().__init__(single_ability)
+        self.generation_url = super().ability_generation_url
+        self.generation_address = f"https://pokeapi.co/api/v2/generation/{self.generation_url}"
         self.generation_request = requests.get(self.generation_address)
         self.generation_response_json = self.generation_request.json()
         #self.generation = generation
 
     def show_ability_generation_details(self):
-        pprint(self.generation_response_json)
+        print("\n" + self.generation + " details:")
+        for key in self.generation_response_json:
+            print(f"\tKEY {key}, VALUE {self.generation_response_json[key]}")
+        # pprint(self.ability_response_json)  # nice format
 
-# limber_gen = PokeAbilityGeneration("limber")
-# pprint(limber_gen)
+
+gen = PokeAbilityGeneration("limber")
+pprint(self.generation_response_json)
